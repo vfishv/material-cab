@@ -44,6 +44,7 @@ import com.afollestad.materialcab.internal.requireOneDimen
 import com.afollestad.materialcab.internal.requireOneString
 import com.afollestad.materialcab.internal.tint
 import com.afollestad.materialcab.invokeAll
+import java.util.concurrent.atomic.AtomicBoolean
 
 /** @author Aidan Follestad (@afollestad) */
 class RealAttachedCab internal constructor(
@@ -56,7 +57,7 @@ class RealAttachedCab internal constructor(
     backgroundColor(literal = attachedContext.colorAttr(androidx.appcompat.R.attr.colorPrimaryDark, Color.GRAY))
   }
 
-  private var isDestroying: Boolean = false
+  private var isDestroying: AtomicBoolean = AtomicBoolean(false)
   private val attachedContext: Activity
     get() = context ?: throw IllegalStateException("Contextual action bar is already destroyed.")
   private val attachedToolbar: Toolbar
@@ -73,7 +74,7 @@ class RealAttachedCab internal constructor(
   private var destroyAnimator: CabAnimator? = null
 
   internal fun show() = attachedToolbar.run {
-    isDestroying = false
+    isDestroying.set(false)
     translationY = 0f
     alpha = 1f
 
@@ -210,16 +211,16 @@ class RealAttachedCab internal constructor(
   }
 
   fun isDestroyed(): Boolean {
-    return context == null || toolbar == null || isDestroying
+    return context == null || toolbar == null || isDestroying.get()
   }
 
   fun startDestroy(): Boolean = synchronized(isDestroying) {
     if (isDestroyed()) return false
-    isDestroying = true
+    isDestroying.set(true)
 
     val canDestroy = destroyCallbacks.invokeAll(this@RealAttachedCab)
     if (!canDestroy) {
-      isDestroying = false
+      isDestroying.set(false)
       return false
     }
 

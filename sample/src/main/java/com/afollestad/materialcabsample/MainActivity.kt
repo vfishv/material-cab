@@ -22,11 +22,11 @@ import com.afollestad.materialcab.attached.AttachedCab
 import com.afollestad.materialcab.attached.destroy
 import com.afollestad.materialcab.attached.isActive
 import com.afollestad.materialcab.createCab
+import com.afollestad.materialcabsample.databinding.ActivityMainBinding
 import com.afollestad.recyclical.datasource.emptySelectableDataSource
 import com.afollestad.recyclical.setup
 import com.afollestad.recyclical.viewholder.isSelected
 import com.afollestad.recyclical.withItem
-import kotlinx.android.synthetic.main.activity_main.list
 
 /** @author Aidan Follestad (afollestad) */
 class MainActivity : AppCompatActivity() {
@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    val binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     setSupportActionBar(findViewById(R.id.main_toolbar))
 
     dataSource.set(
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             .map { MainItem("Item #$it") }
     )
 
-    list.setup {
+    binding.list.setup {
       withDataSource(dataSource)
       withItem<MainItem, MainViewHolder>(R.layout.listitem_main) {
         onBind(::MainViewHolder) { index, item ->
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
       mainCab = createCab(R.id.cab_stub) {
         title(literal = getString(R.string.x_selected, dataSource.getSelectionCount()))
         menu(R.menu.menu_cab)
-        popupTheme(R.style.ThemeOverlay_AppCompat_Light)
+        popupTheme(androidx.appcompat.R.style.ThemeOverlay_AppCompat_Light)
         slideDown()
 
         onCreate { _, menu -> onCabCreated(menu) }
