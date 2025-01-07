@@ -53,7 +53,7 @@ class RealAttachedCab internal constructor(
 ) : AttachedCab {
   init {
     titleColor(literal = Color.WHITE)
-    backgroundColor(literal = attachedContext.colorAttr(R.attr.colorPrimaryDark, Color.GRAY))
+    backgroundColor(literal = attachedContext.colorAttr(androidx.appcompat.R.attr.colorPrimaryDark, Color.GRAY))
   }
 
   private var isDestroying: Boolean = false
