@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
 
-apply from: '../bintrayconfig.gradle'
+//apply from: '../bintrayconfig.gradle'
 
 android {
   compileSdkVersion versions.compileSdk
@@ -35,4 +35,4 @@ dependencies {
   implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:' + versions.kotlin
 }
 
-apply from: '../spotless.gradle'
+//apply from: '../spotless.gradle'
