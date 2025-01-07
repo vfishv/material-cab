@@ -9,6 +9,10 @@ android {
   buildToolsVersion versions.buildTools
   namespace "com.afollestad.materialcabsample"
 
+  buildFeatures {
+    viewBinding true
+  }
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
