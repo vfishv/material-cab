@@ -9,6 +9,11 @@ android {
   buildToolsVersion versions.buildTools
   namespace "com.afollestad.materialcab"
 
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_21
+    targetCompatibility JavaVersion.VERSION_21
+  }
+
   defaultConfig {
     minSdkVersion versions.minSdk
     targetSdkVersion versions.compileSdk
