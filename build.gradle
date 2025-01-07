@@ -5,8 +5,8 @@ buildscript {
     apply from: './dependencies.gradle'
 
     repositories {
-	google()
-        jcenter()
+        google()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:' + versions.gradlePlugin
@@ -20,13 +20,14 @@ buildscript {
 allprojects {
     repositories {
 	google()
-        jcenter()
+        google()
+        mavenCentral()
     }
 
     buildscript {
         repositories {
-		google()
-		jcenter()
+            google()
+            mavenCentral()
         }
     }
 
