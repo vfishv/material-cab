@@ -13,6 +13,6 @@ ext.versions = [
 
     androidx          : '1.6.1',
     androidxAnnotation: '1.6.0',
-    recyclerView      : '1.3.0',
+    recyclerView      : '1.3.2',
     recyclical        : '1.0.0'
 ]

@@ -7,6 +7,7 @@ apply from: '../bintrayconfig.gradle'
 android {
   compileSdkVersion versions.compileSdk
   buildToolsVersion versions.buildTools
+  namespace "com.afollestad.materialcab"
 
   defaultConfig {
     minSdkVersion versions.minSdk
