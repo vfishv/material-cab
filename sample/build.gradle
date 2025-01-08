@@ -6,7 +6,7 @@ apply from: '../dependencies.gradle'
 
 android {
   compileSdkVersion versions.compileSdk
-  buildToolsVersion versions.buildTools
+  //buildToolsVersion versions.buildTools
   namespace "com.afollestad.materialcabsample"
 
   buildFeatures {
